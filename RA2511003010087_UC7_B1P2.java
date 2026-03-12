@@ -4,13 +4,13 @@ class CharacterPattern{
     public ArrayList<Character> characters = new ArrayList<>();
     public ArrayList<String[]> patterns = new ArrayList<>();
 
-    public String GetPattern(char character, String[] pattern){
+    public String getPattern(char character, String[] pattern){
         characters.add(character);
         patterns.add(pattern);  
         return "Pattern added"; 
     }
 
-    public String[] GivePattern(char character){
+    public String[] givePattern(char character){
         for (int i = 0; i < characters.size(); i++){
             if (characters.get(i) == character){
                 return patterns.get(i);
@@ -21,7 +21,7 @@ class CharacterPattern{
 
     public static void main(String[] args){
         CharacterPattern cp = new CharacterPattern();
-        cp.GetPattern('O', new String[]{
+        cp.getPattern('O', new String[]{
             "   ***    ",
             " **   **  ",
             "**     ** ",
@@ -31,7 +31,7 @@ class CharacterPattern{
             "**     ** ",
             " **   **  ",
             "   ***    "});
-        cp.GetPattern('P', new String[]{
+        cp.getPattern('P', new String[]{
             "******    ",
             "**    **  ",
             "**     ** ",
@@ -42,7 +42,7 @@ class CharacterPattern{
             "**        ",
             "**        "
         });
-        cp.GetPattern('S', new String[]{
+        cp.getPattern('S', new String[]{
             "  *****  ",
             " **      ",
             "**       ",
@@ -54,13 +54,15 @@ class CharacterPattern{
             " *****   "
         });
         String word = "OOPS";
-        for (char ch : word.toCharArray()){
-            String[] pat = cp.GivePattern(ch);
-            if (pat != null){
-                for (String line : pat){
-                    System.out.println(line);
+        for (int i = 0; i < 9; i++){
+            String line = "";
+            for (char ch : word.toCharArray()){
+                String[] pat = cp.givePattern(ch);
+                if (pat != null){
+                    line = line + pat[i];
                 }
             }
+            System.out.println (line);
         }
     }
 }
